@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Resume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,200,700" rel="stylesheet">
+    <style>a,h1,h2,h3,h4,h5,h6,li,p{
+    font-family:Raleway,sans-serif
+}
+@page {
+    size: 8.5in 10in;
+}
+.resume{
+    background-color:#1f1f1f;
+    min-height:100vh
+}
+.resume .main{
+    height:100%;
+    width:800px;
+    background-color:#fff;
+    padding:0 25px;
+    margin:0 auto
+}
+.resume .resume-heading {
+    font-size:29pt;
+}
+.resume .main .header{
+    border-bottom:1px solid #ddd
+}
+.resume .main .header .page-title-container{
+    margin:0 auto;
+    text-align:center;
+    padding-bottom:0px
+}
+.resume .main .header .page-title{
+    font-size:40pt;
+    display:inline
+}
+.resume .main .header .page-title-first{
+    font-weight:400
+}
+.resume .main .header .page-title-last{
+    font-weight:200
+}
+.resume .main .header .header-icons{
+    text-align:center
+}
+.resume .main .header .header-icons .page-subhead{
+    margin:1rem 15px;
+    display:inline
+}
+.resume .main .header .fa{
+    padding-right:10px
+}
+.resume .main .indented{
+    padding-left:40px
+}
+.resume .main .category-row{
+    padding-bottom:2px
+}
+.resume .main .category-row .category{
+    margin-right:10px;
+    padding-left:5px;
+    padding-right:10px;
+    border-bottom:1px solid #ddd;
+    border-right:1px solid #ddd
+}
+.resume .main .category-row .category-row-title{
+    margin:.4rem 0
+}
+.resume .main .category-row .category-subtitle,.resume .main .category-row .category-title{
+    display:inline;
+    margin-top:10px;
+    margin-bottom:5px
+}
+.resume .main .category-row .category-bullets{
+    margin-top:2px
+}
+.resume .main .category-row li,.resume .main .category-row p{
+    font-size:smaller;
+    margin-bottom:5px;
+}
+.resume .main .category-row li {
+    margin-left:-20px;
+}
+category:last-of-type category-item:last-of-type .category,sidebar-category:last-of-type .category{
+    border-bottom:0!important;
+    padding-bottom:0!important;
+    margin-bottom:0!important
+}
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <!-- <script src="resume.js"></script> -->
+    <script>"use strict";angular.module("Resume",["ngMaterial"]).directive("resume",function(){return{restrict:"E",transclude:!0,template:'<div class="resume">\n      <section class="main" ng-transclude></section>\n    </div>'}}).directive("resumeHeading",function(){return{restrict:"E",scope:{firstName:"@",lastName:"@",phone:"@",email:"@",github:"@",linkedin:"@", website:"@"},template:'<div class="header">\n      <div class="page-title-container">\n        <h1 class="page-title page-title-first">{{firstName}}</h1>\n        <h1 class="page-title page-title-last">{{lastName}}</h1>\n      </div>\n      <div class="header-icons">\n    <span ng-if="phone" class="md-subhead page-subhead"><i class="fa fa-lg fa-phone"></i>{{phone}}</span>\n        <span ng-if="email" class="md-subhead page-subhead"><i class="fa fa-lg fa-envelope"></i>{{email}}</span>\n        <span ng-if="github" class="md-subhead page-subhead"><i class="fa fa-lg fa-github"></i>{{github}}</span>\n        <span ng-if="linkedin" class="md-subhead page-subhead"><i class="fa fa-lg fa-linkedin-square"></i>{{linkedin}}</span>\n <span ng-if="website" class="md-subhead page-subhead"><i class="fa fa-lg fa-code"></i>{{website}}</span>\n </div>\n    </div>'}}).directive("resumeBody",function(){return{restrict:"E",transclude:!0,template:'<div layout="row" ng-transclude></div>'}}).directive("resumeColumn",function(){return{restrict:"E",transclude:!0,template:"<div ng-transclude></div>"}}).directive("sidebarCategory",function(){return{restrict:"E",scope:{name:"@"},transclude:!0,template:'<div flex="" class="category-row">\n      <div class="category">\n        <h5 class="category-row-title">{{name}}</h5>\n        <ng-transclude></ng-transclude>\n      </div>\n    </div>'}}).directive("category",function(){return{restrict:"E",scope:{name:"@"},transclude:!0,template:'<div flex="" class="category-row">\n      <h4 class="category-row-title">{{name}}</h4>\n      <ng-transclude></ng-transclude>\n    </div>'}}).directive("categoryItem",function(){return{restrict:"E",scope:{title:"@",subtitle:"@"},transclude:!0,template:'<div class="category">\n        <h5 class="category-title md-body-2">{{title}}</h5>&nbsp;\n        <h5 class="category-subtitle md-caption">{{subtitle}}</h5>\n        <ul class="category-bullets" ng-transclude></ul>\n    </div>'}});</script>
+</head>
+
+<body ng-app="Resume" ng-cloak>
+    <resume>
+        <resume-heading first-name="Sean"
+                        last-name="Lee"
+                        linkedin="seanlee98"
+                        email="sangyoon0203@gmail.com"
+                        phone="7788229447"
+                        github="seanlee98"
+                        >
+        </resume-heading>
+        <resume-body>
+            <resume-column flex="30" style="padding-top: 5px">
+                <category name="Skills">
+                    <sidebar-category name="Languages">
+                        <p>Swift/Objective-C</p>
+                        <p>Python</p>
+                        <p>Java</p>
+                        <p>Presto/Hive</p>
+                        <p>HTML5/CSS3</p>
+                        <p>C#</p>
+                    </sidebar-category>
+                    <sidebar-category name="Technologies">
+                        <p>iOS</p>
+       					<p>Snapshot Testing</p>
+       					<p>Tornado</p>
+                        <p>MongoDB</p>
+                        <p>Treasure Data</p>
+                        <p>Charles</p>
+                    </sidebar-category>
+                    <category name="Education">
+                    <sidebar-category name="University of Waterloo">
+                        <p>B.Asc. Honours Computer Engineering</p>
+                        <p>Graduated April 2020 with Distinction</p>
+                    </sidebar-category>
+                </category>
+                <category name= "Interests & Activities">
+                    <sidebar-category>
+                        <p>Competitive Powerlifting (OPA/CPU)</p>
+                        <p>Spoiling my dog</p>
+                        <p>University of Waterloo Orchestra (Trumpet)</p>
+                    </sidebar-category>
+                </category>
+            </resume-column>
+            <resume-column flex="95" style="padding-top: 5px">
+                <category name="Professional Experience">
+                    <category-item title = "Software Engineer III" subtitle = "Wish, Toronto (May 2020 - Present)">
+                		<li>Independently and collaboratively developed numerous high-priority Growth features that achieved lifts in several key metrics (<strong>Returning Free Gift</strong> resulted in <strong>+22% Total Buyers</strong> and <strong>+8.5% GMV</strong>, <strong>Guest Checkout</strong> resulted in <strong>+3.5% D1 GMV</strong>)</li>
+                        <li>Optimized for long-term success while under tight deadlines by taking the time to create reusable <strong>Swift/UIKit</strong> components and migrating feature code to <strong>Swift Packages</strong>, enabling more efficient development for team members</li>
+                        <li>Onboarded new team members to our formerly-monolithic codebase and demonstrated best practices to utilize <strong>MVVM</strong> and <strong>SPM</strong> across feature development</li>
+                        <li>Provided direct mentorship to University of Waterloo Interns and guided the completion of critical features while being responsible for their performance and development</li>
+                    </category-item>
+                	<category-item title = "iOS Developer" subtitle = "Wish, San Francisco (Sept 2019 - Dec 2019)">
+                		<li>Performed design experiments related to the New User Experience Flow, increasing first-time users' retention by <strong>12%</strong></li>
+                		<li>Created a custom <strong>Operation</strong> subclass to manage concurrent network calls asynchronously (with <strong>OperationQueue</strong>)</li>
+                		<li>Implemented the Discover feed, a new way for users to access trending products that are intelligently compiled to complement their interests</li>
+                	</category-item>
+                    <category-item title = "Agile Software Engineer" subtitle = "TribalScale, Toronto (Sept 2018 - Dec 2018)">
+                        <li>Created an internal <strong>React</strong> application that utilizes Github data on employees to enhance allocations for future projects. Leveraged <strong>Redux Saga</strong> for state management and <strong>Jest</strong> with <strong>Enzyme</strong> for test-driven development</li>
+                        <li>Enhanced the ABC News <strong>iOS</strong> application to improve user experience and add new features for the 2018 US Midterm Elections</li>
+                        <!-- <li>Refactored legacy code (written in <strong>Objective-C</strong>) to <strong>Swift 4</strong> components that follow <strong>MVVM</strong> architecture and wrote additional unit tests to increase code coverage by <strong>17%</strong></li> -->
+                        <!-- <li>Launched the product website for a national pharmaceutical company on <strong>React</strong> with <strong>SASS</strong> styling and subscription/contact services through <strong>NodeJS</strong> back-end</li> -->
+                    </category-item>
+                    <category-item title = "Full-Stack Developer" subtitle = "Bentley Systems, Toronto (Jan 2018 - Apr 2018)">
+                        <li>Developed and maintained cross-platform features utilizing <strong>Xamarin.Forms</strong> and <strong>NUnit</strong> testing framework for enterprise mobile applications</li>
+                        <!-- <li>Migrated UI testing coverage to <strong>Visual Studio App Center</strong> to automate tests across hundreds of <strong>Android</strong> and <strong>iOS</strong> devices</li> -->
+                        <li>Wrote dynamic <strong>AJAX</strong> calls to an Interoperability project, enabling persistent connection details across engine nodes (running on <strong>Angular</strong> web page integrated with <strong>Azure Service Fabric & Service Bus</strong>)</li>
+                        <!-- <li>Created a producer function to generate random asset data that is published to service bus subscribers, enabling load testing on engine nodes with compiled running times</li> -->
+                        <!-- <li>Built responsive form controls for an <strong>Angular</strong> web project, designed to deliver superior user-experience for existing clientele</li>   -->                                                  
+                    </category-item>
+                    <category-item title = "iOS Developer" subtitle = "Capco, Toronto (May 2017 - Aug 2017)">
+                        <li>Developed and re-launched iOS application for a Top Canadian Bank, providing personal financial services to over two million consumers around the world through an upgraded user experience</li>
+               <!--          <li>Coordinated with back-end team to implement <strong>REST API</strong> calls through a custom <strong>JSON</strong> parser built with <strong>Swift</strong></li> -->
+                        <!-- <li>Worked extensively with <strong>UIKit</strong> to implement custom components for core banking features</li> -->
+                        <li>Built custom logging framework and unit test cases (<strong>XCTest</strong>) to optimize debugging and increase code coverage to <strong>87%</strong></li>
+                       <!--  <li>Experienced <strong>Agile</strong> methodologies for software development, while following <strong>UIApplication</strong> programming paradigms (<strong>MVC</strong>)</li> -->
+                    </category-item>
+                </category>
+                <category name="Projects">
+                    <category-item title="Twitalytics" subtitle="ReactJS/Flask/Twitter API/NLTK">
+                        <li>Created a <strong>React</strong> application that extracts tweets from <strong>Twitter Search API</strong>,
+                          performs sentiment analysis, and highlights the public opinion of a topic through data visualizations (<strong>React-Vis</strong>)</li>
+                        <li>Developed an NLP algorithm using <strong>NLTK</strong> that clusters and prioritizes popular tweets</li>
+	                    <li>Winner of Best Use of Entity Extraction at Hack Western 2018 (<a href="https://devpost.com/software/twitalytics-icdn3l">Devpost</a>)</li>
+                    </category-item>
+                    <!-- <category-item title="UnbiasifyPlus" subtitle="Javascript/JQuery">
+                        <li>Winner of Coinsquare's Best Contribution to Open-Source Project (<a href="https://github.com/Unbiasify/unbiasify">Unbiasify</a>) at Hack the Valley 2018</li>
+                        <li>Implemented visual filters across popular social media platforms to eliminate bias within the user experience</li>
+                    </category-item> -->
+                    <!-- <category-item title="PathFinder" subtitle="Java/Android SDK">
+                        <li>Android application that displays user movement and navigational directions on an SVG diagram
+                        <li>Utilized <strong>Android Sensors API</strong> and finite state machines to generate a step/direction detection algorithm</li>
+                        <li>Implemented high pass and low pass filters to attenuate frequency signals, resulting in less than<strong> 5%</strong> error in output data</li>
+                        <li>Used <strong>A*</strong> search algorithm to find shortest path between origin and destination</li>
+                    </category-item> -->
+                </category>
+            </resume-column>
+        </resume-body>
+    </resume>
+
+</body>
+
+</html>
